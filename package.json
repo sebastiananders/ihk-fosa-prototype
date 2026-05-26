@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "cp -r node_modules/@kern-ux/native/dist src/assets/kern"
+  },
   "dependencies": {
     "@kern-ux/native": "^2.6.1"
   }
