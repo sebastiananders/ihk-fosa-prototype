@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de" data-kern-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Anmelden – IHK FOSA</title>
+  <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/fonts/fira-sans.css">
+  <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/kern.css">
+  <link rel="stylesheet" href="./theme.css">
+  <link rel="stylesheet" href="./components.css">
+</head>
+<body>
+  <div class="ihk-page">
+
+    <!-- ── Auth Header ──────────────────────────────────────── -->
+    <header class="ihk-auth-header">
+      <a href="#" class="ihk-logo" aria-label="IHK FOSA – Startseite">
+        <img src="./assets/img/fosa_logo.avif" alt="IHK FOSA" class="ihk-logo__img">
+      </a>
+    </header>
+
+    <!-- ── Main ─────────────────────────────────────────────── -->
+    <main class="ihk-auth-main" id="main-content">
+      <div class="ihk-auth-wrap">
+
+        <!-- Error alert — shown on failed login -->
+        <div class="kern-alert kern-alert--danger"
+             role="alert"
+             aria-live="polite"
+             id="login-error"
+             hidden>
+          <div class="kern-alert__header">
+            <svg class="ihk-alert-icon" width="32" height="32" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span class="kern-title">E-Mail-Adresse oder Passwort ist nicht korrekt.</span>
+          </div>
+          <div class="kern-alert__body">
+            <p class="kern-body kern-body--small">
+              Bitte überprüfen Sie Ihre Anmeldedaten und versuchen Sie es erneut.
+              Bei mehreren Fehlversuchen wird Ihr Konto gesperrt.
+            </p>
+          </div>
+        </div>
+
+        <!-- Login card -->
+        <div class="kern-card kern-card--hug">
+          <div class="kern-card__container">
+            <div class="kern-card__header">
+              <h1 class="kern-heading-medium">Anmelden</h1>
+            </div>
+            <div class="kern-card__body">
+              <form id="login-form" novalidate>
+                <div class="ihk-stack">
+
+                  <!-- E-Mail -->
+                  <div class="kern-form-input" id="email-field">
+                    <label for="email" class="kern-label">E-Mail-Adresse</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="kern-form-input__input"
+                      autocomplete="email"
+                      inputmode="email"
+                      required
+                      aria-required="true"
+                      aria-describedby="email-error"
+                    >
+                    <div class="kern-error" id="email-error" hidden role="alert">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                           stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                      </svg>
+                      <span class="kern-body kern-body--small">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+                    </div>
+                  </div>
+
+                  <!-- Passwort -->
+                  <div class="kern-form-input" id="passwort-field">
+                    <label for="passwort" class="kern-label">Passwort</label>
+                    <div class="ihk-password-field">
+                      <input
+                        type="password"
+                        id="passwort"
+                        name="passwort"
+                        class="kern-form-input__input"
+                        autocomplete="current-password"
+                        required
+                        aria-required="true"
+                        aria-describedby="passwort-error"
+                      >
+                      <button
+                        type="button"
+                        class="ihk-password-toggle"
+                        aria-label="Passwort anzeigen"
+                        aria-controls="passwort"
+                        id="pw-toggle"
+                      >
+                        <!-- Eye icon -->
+                        <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                          <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <!-- Eye-off icon (shown when password is visible) -->
+                        <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                          <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                          <line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="kern-error" id="passwort-error" hidden role="alert">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                           stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                      </svg>
+                      <span class="kern-body kern-body--small">Bitte geben Sie Ihr Passwort ein.</span>
+                    </div>
+                  </div>
+
+                  <!-- Submit -->
+                  <button type="submit" class="kern-btn kern-btn--primary kern-btn--block">
+                    <span class="kern-label">Anmelden</span>
+                  </button>
+
+                </div>
+              </form>
+
+              <!-- Forgot password link -->
+              <div class="ihk-auth-links">
+                <a href="#" class="kern-btn kern-btn--tertiary">
+                  <span class="kern-label">Passwort vergessen?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Register prompt -->
+        <div class="ihk-register-prompt">
+          <p class="kern-body kern-body--small kern-body--muted">Noch kein Konto?</p>
+          <a href="registrierung.html" class="kern-btn kern-btn--secondary kern-btn--block">
+            <span class="kern-label">Jetzt registrieren</span>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+  </div><!-- .ihk-page -->
+
+  <script>
+    'use strict';
+
+    // ── Password toggle ─────────────────────────────────────
+    const pwInput = document.getElementById('passwort');
+    const pwToggle = document.getElementById('pw-toggle');
+    const eyeOn  = pwToggle.querySelector('.icon-eye');
+    const eyeOff = pwToggle.querySelector('.icon-eye-off');
+
+    pwToggle.addEventListener('click', () => {
+      const showing = pwInput.type === 'text';
+      pwInput.type = showing ? 'password' : 'text';
+      pwToggle.setAttribute('aria-label', showing ? 'Passwort anzeigen' : 'Passwort verbergen');
+      eyeOn.style.display  = showing ? '' : 'none';
+      eyeOff.style.display = showing ? 'none' : '';
+    });
+
+    // ── Login form ──────────────────────────────────────────
+    const form = document.getElementById('login-form');
+    const errorBanner = document.getElementById('login-error');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const pw    = document.getElementById('passwort').value;
+      let valid = true;
+
+      // Basic validation
+      if (!email) {
+        document.getElementById('email-error').hidden = false;
+        document.getElementById('email-field').classList.add('kern-form-input--error');
+        valid = false;
+      } else {
+        document.getElementById('email-error').hidden = true;
+        document.getElementById('email-field').classList.remove('kern-form-input--error');
+      }
+
+      if (!pw) {
+        document.getElementById('passwort-error').hidden = false;
+        document.getElementById('passwort-field').classList.add('kern-form-input--error');
+        valid = false;
+      } else {
+        document.getElementById('passwort-error').hidden = true;
+        document.getElementById('passwort-field').classList.remove('kern-form-input--error');
+      }
+
+      if (!valid) return;
+
+      // Role-based routing simulation
+      // admin@ihk-fosa.de → admin board | anything else → status
+      if (email.includes('admin')) {
+        window.location.href = 'admin-antraege.html';
+      } else {
+        window.location.href = 'status.html';
+      }
+    });
+  </script>
+</body>
+</html>

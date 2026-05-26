@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="de" data-kern-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Antragsstatus – IHK FOSA</title>
+  <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/fonts/fira-sans.css">
+  <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/kern.css">
+  <link rel="stylesheet" href="./theme.css">
+  <link rel="stylesheet" href="./components.css">
+</head>
+<body>
+  <div class="ihk-page">
+
+    <!-- ── Kopfzeile ────────────────────────────────────────── -->
+    <header class="kern-kopfzeile" role="banner">
+      <div class="kern-container-fluid">
+        <div class="kern-kopfzeile__content ihk-kopfzeile-wrap">
+          <a href="#" class="ihk-logo" aria-label="IHK FOSA – Startseite">
+            <img src="./assets/img/fosa_logo.avif" alt="IHK FOSA" class="ihk-logo__img">
+          </a>
+          <div class="ihk-kopfzeile-actions">
+            <button class="ihk-icon-btn" aria-label="Benutzerkonto – Ana Martins" title="Benutzerkonto">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </button>
+            <button class="ihk-icon-btn" aria-label="Abmelden" title="Abmelden"
+                    onclick="window.location.href='login.html'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Main Content ──────────────────────────────────────── -->
+    <main class="ihk-page-main" id="main-content" tabindex="-1">
+
+      <!-- Page heading -->
+      <div>
+        <h1 class="kern-heading-medium" style="padding-bottom: var(--kern-metric-space-x-small);">Mein Antrag</h1>
+        <p class="kern-body kern-body--muted">Willkommen zurück, Ana.</p>
+      </div>
+
+      <!-- ── Application reference card ── -->
+      <section aria-labelledby="antrag-heading">
+        <div class="kern-card kern-card--hug">
+          <div class="kern-card__container" style="padding: var(--kern-metric-space-default);">
+            <div class="kern-card__header">
+              <h2 class="kern-heading-small" id="antrag-heading" style="font-size: 0.875rem;">Antragsdaten</h2>
+            </div>
+            <div class="kern-card__body">
+              <dl class="kern-description-list kern-description-list--col">
+                <div class="kern-description-list-item">
+                  <dt class="kern-description-list-item__key">Antragsnummer</dt>
+                  <dd class="kern-description-list-item__value">
+                    <strong>FOSA-2025-03847</strong>
+                  </dd>
+                </div>
+                <div class="kern-description-list-item">
+                  <dt class="kern-description-list-item__key">Eingereicht am</dt>
+                  <dd class="kern-description-list-item__value">15. März 2025</dd>
+                </div>
+                <div class="kern-description-list-item">
+                  <dt class="kern-description-list-item__key">Qualifikation</dt>
+                  <dd class="kern-description-list-item__value">Hochschulabschluss (Medizin), Brasilien</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Application timeline ── -->
+      <section aria-labelledby="verlauf-heading">
+        <div class="kern-card kern-card--hug">
+          <div class="kern-card__container" style="padding: var(--kern-metric-space-default);">
+            <div class="kern-card__header">
+              <h2 class="kern-heading-small" id="verlauf-heading" style="font-size: 0.875rem;">Bearbeitungsverlauf</h2>
+            </div>
+            <div class="kern-card__body">
+              <ol class="ihk-timeline" aria-label="Antragsstufen">
+
+                <!-- Step 1: Eingegangen (done) -->
+                <li class="ihk-timeline__step ihk-timeline__step--done">
+                  <div class="ihk-timeline__indicator" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="3"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div class="ihk-timeline__content">
+                    <span class="ihk-timeline__label">Eingegangen</span>
+                    <span class="ihk-timeline__date">15. März 2025</span>
+                  </div>
+                </li>
+
+                <!-- Step 2: Vollständigkeitsprüfung (done) -->
+                <li class="ihk-timeline__step ihk-timeline__step--done">
+                  <div class="ihk-timeline__indicator" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="3"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div class="ihk-timeline__content">
+                    <span class="ihk-timeline__label">Vollständigkeitsprüfung</span>
+                    <span class="ihk-timeline__date">22. März 2025</span>
+                  </div>
+                </li>
+
+                <!-- Step 3: Fachliche Prüfung (active — current step) -->
+                <li class="ihk-timeline__step ihk-timeline__step--active">
+                  <div class="ihk-timeline__indicator" aria-current="step" aria-label="Aktueller Schritt">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"
+                         aria-hidden="true">
+                      <circle cx="12" cy="12" r="6"/>
+                    </svg>
+                  </div>
+                  <div class="ihk-timeline__content">
+                    <span class="ihk-timeline__label">Fachliche Prüfung</span>
+                    <span class="ihk-timeline__date">Seit 4. April 2025</span>
+                    <span class="ihk-timeline__current-label">In Bearbeitung</span>
+                  </div>
+                </li>
+
+                <!-- Step 4: Entscheidung (pending) -->
+                <li class="ihk-timeline__step ihk-timeline__step--pending">
+                  <div class="ihk-timeline__indicator" aria-hidden="true">4</div>
+                  <div class="ihk-timeline__content">
+                    <span class="ihk-timeline__label">Entscheidung</span>
+                  </div>
+                </li>
+
+                <!-- Step 5: Abgeschlossen (pending) -->
+                <li class="ihk-timeline__step ihk-timeline__step--pending">
+                  <div class="ihk-timeline__indicator" aria-hidden="true">5</div>
+                  <div class="ihk-timeline__content">
+                    <span class="ihk-timeline__label">Abgeschlossen</span>
+                  </div>
+                </li>
+
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Status alert (current state message) ── -->
+      <div class="kern-alert kern-alert--info" role="status" aria-live="polite">
+        <div class="kern-alert__header">
+          <svg class="ihk-alert-icon" width="32" height="32" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <span class="kern-title">Ihr Antrag wird geprüft</span>
+        </div>
+        <div class="kern-alert__body">
+          <p class="kern-body kern-body--small">
+            Ihr Antrag befindet sich derzeit in der fachlichen Prüfung. Unsere Sachbearbeiter
+            prüfen Ihre eingereichten Unterlagen. Wir melden uns, sobald eine Entscheidung
+            getroffen wurde. Dies kann 4–8 Wochen in Anspruch nehmen.
+          </p>
+          <p class="kern-body kern-body--small" style="margin-top: var(--kern-metric-space-x-small);">
+            Bei Fragen wenden Sie sich an:
+            <a href="mailto:info@ihk-fosa.de" style="color: var(--kern-color-action-default);">info@ihk-fosa.de</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Document task list ── -->
+      <section aria-labelledby="docs-heading">
+        <div class="kern-card kern-card--hug">
+          <div class="kern-card__container" style="padding: var(--kern-metric-space-default);">
+            <div class="kern-card__header">
+              <h2 class="kern-heading-small" id="docs-heading" style="font-size: 0.875rem;">Ausstehende Dokumente</h2>
+            </div>
+            <div class="kern-card__body">
+              <div class="kern-task-list">
+                <ul class="kern-task-list__list" aria-label="Noch fehlende Unterlagen">
+
+                  <li class="kern-task-list__item">
+                    <div class="kern-task-list__title">
+                      <span class="kern-body kern-body--small">Beglaubigte Übersetzung – Anhang 2</span>
+                    </div>
+                    <div class="kern-task-list__status">
+                      <span class="kern-badge kern-badge--warning kern-badge--small">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                          <line x1="12" y1="9" x2="12" y2="13"/>
+                          <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span class="kern-label">Ausstehend</span>
+                      </span>
+                    </div>
+                  </li>
+
+                  <li class="kern-task-list__item">
+                    <div class="kern-task-list__title">
+                      <span class="kern-body kern-body--small">Nachweis Berufserfahrung (mind. 2 Jahre)</span>
+                    </div>
+                    <div class="kern-task-list__status">
+                      <span class="kern-badge kern-badge--warning kern-badge--small">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                          <line x1="12" y1="9" x2="12" y2="13"/>
+                          <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span class="kern-label">Ausstehend</span>
+                      </span>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+
+              <!-- Upload button -->
+              <div style="margin-top: var(--kern-metric-space-default);">
+                <a href="#" class="kern-btn kern-btn--secondary" style="width: 100%;">
+                  <span class="kern-label">Dokumente nachreichen</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── Bottom Tab Bar ────────────────────────────────────── -->
+    <nav class="ihk-bottom-nav"
+         aria-label="Hauptnavigation"
+         role="tablist">
+
+      <!-- Status tab (active) -->
+      <a href="status.html"
+         class="ihk-bottom-nav__tab"
+         role="tab"
+         aria-selected="true"
+         aria-label="Status">
+        <svg class="ihk-bottom-nav__icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span class="ihk-bottom-nav__label">Status</span>
+      </a>
+
+      <!-- Dokumente tab (inactive) -->
+      <a href="#"
+         class="ihk-bottom-nav__tab"
+         role="tab"
+         aria-selected="false"
+         aria-label="Dokumente">
+        <svg class="ihk-bottom-nav__icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span class="ihk-bottom-nav__label">Dokumente</span>
+      </a>
+
+      <!-- Profil tab (inactive) -->
+      <a href="#"
+         class="ihk-bottom-nav__tab"
+         role="tab"
+         aria-selected="false"
+         aria-label="Profil">
+        <svg class="ihk-bottom-nav__icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="ihk-bottom-nav__label">Profil</span>
+      </a>
+
+    </nav>
+
+  </div><!-- .ihk-page -->
+</body>
+</html>

@@ -1,0 +1,202 @@
+/**
+ * IHK-FOSA Theme Tokens
+ * ======================
+ * Philosophy: Civic Digital
+ * Source: .design/ihk-fosa-prototype/DESIGN_BRIEF.md
+ *
+ * Applies IHK-FOSA brand identity as a KERN UX Design System theme override.
+ * Load AFTER kern.css — do not edit @kern-ux/native source files directly.
+ *
+ * Usage in HTML:
+ *   <html lang="de" data-kern-theme="light">
+ *   <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/fonts/fira-sans.css">
+ *   <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/kern.css">
+ *   <link rel="stylesheet" href="theme.css">
+ *
+ * Structure:
+ *   1. IHK-FOSA brand primitives
+ *   2. KERN action token overrides — light theme
+ *   3. Project-specific component tokens (Bottom Tab Bar, Timeline, Status)
+ *   4. KERN action token overrides — dark theme (out of scope for prototype)
+ *   5. System-preference dark mode
+ */
+
+
+/* ═══════════════════════════════════════════════════════════════
+   1. IHK-FOSA Brand Primitives
+   Raw values only — referenced by overrides below, not used directly in components.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Core brand navy — the only KERN override in light mode */
+  --ihk-brand-navy:      #212A54; /* Contrast on white: 13.4:1 — exceeds WCAG AAA */
+  --ihk-brand-navy-pale: #8B9AD4; /* Light variant for dark-mode use — contrast on black: 7.8:1 */
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   2. KERN Action Token Overrides — Light Theme
+
+   Only --kern-color-action-default and --kern-color-action-on-default
+   need explicit values. All hover/active/state tokens in KERN use
+   color-mix(in oklch, var(--kern-color-action-default), ...) and
+   cascade correctly from this single override.
+
+   Selectors mirror KERN's own theme selectors to maintain specificity.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root,
+[data-kern-theme="light"],
+.kern-light {
+  --kern-color-action-default:    var(--ihk-brand-navy);
+  --kern-color-action-on-default: #ffffff;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   3. Project-Specific Component Tokens
+
+   Tokens for the two new custom components and semantic status aliases.
+   All reference KERN semantic tokens where possible — raw values only
+   where KERN has no suitable equivalent.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Bottom Tab Bar ─────────────────────────────────────── */
+
+  /* Height: 56px = KERN's 2x-large dimension token */
+  --ihk-bottom-nav-height:          var(--kern-metric-dimension-2x-large);
+
+  /* Surface */
+  --ihk-bottom-nav-bg:              var(--kern-color-layout-background-default);
+  --ihk-bottom-nav-border-top:      1px solid var(--kern-color-decorative-border-level-1);
+
+  /* Icon and label states */
+  --ihk-bottom-nav-icon-inactive:   var(--kern-color-layout-text-muted);
+  --ihk-bottom-nav-icon-active:     var(--kern-color-action-default);
+  --ihk-bottom-nav-label-inactive:  var(--kern-color-layout-text-muted);
+  --ihk-bottom-nav-label-active:    var(--kern-color-action-default);
+
+  /* Label typography */
+  --ihk-bottom-nav-label-size:      0.75rem;  /* 12px — below KERN's smallest token */
+  --ihk-bottom-nav-label-weight:    var(--kern-typography-font-weight-medium);
+
+  /* iOS safe area padding — prevents overlap with home indicator */
+  --ihk-bottom-nav-safe-area:       env(safe-area-inset-bottom, 0px);
+
+
+  /* ── Application Timeline ───────────────────────────────── */
+
+  /* Step circle */
+  --ihk-timeline-step-size:            var(--kern-metric-dimension-large);  /* 32px */
+  --ihk-timeline-step-border-width:    var(--kern-metric-border-width-default); /* 2px */
+
+  /* Connector line between steps */
+  --ihk-timeline-connector-width:      var(--kern-metric-border-width-default); /* 2px */
+
+  /* Pending step (not yet reached) */
+  --ihk-timeline-step-pending-bg:      var(--kern-color-layout-background-default);
+  --ihk-timeline-step-pending-border:  var(--kern-color-layout-border);
+  --ihk-timeline-step-pending-color:   var(--kern-color-layout-text-muted);
+  --ihk-timeline-connector-pending:    var(--kern-color-decorative-border-default);
+
+  /* Active step (current) */
+  --ihk-timeline-step-active-bg:       var(--kern-color-action-default);
+  --ihk-timeline-step-active-border:   var(--kern-color-action-default);
+  --ihk-timeline-step-active-color:    var(--kern-color-action-on-default);
+
+  /* Done step (completed) */
+  --ihk-timeline-step-done-bg:         var(--kern-color-feedback-success);
+  --ihk-timeline-step-done-border:     var(--kern-color-feedback-success);
+  --ihk-timeline-step-done-color:      #ffffff;
+  --ihk-timeline-connector-done:       var(--kern-color-feedback-success);
+
+  /* Step label */
+  --ihk-timeline-label-size:           0.75rem; /* 12px */
+  --ihk-timeline-label-weight:         var(--kern-typography-font-weight-medium);
+  --ihk-timeline-label-active-weight:  var(--kern-typography-font-weight-semi-bold);
+
+
+  /* ── Application Status — Semantic Aliases ──────────────── */
+  /*
+   * Maps application stages to KERN feedback tokens.
+   * Used on Badge (admin board) and Alert (status screen).
+   *
+   * "Eingegangen"        → neutral (default)
+   * "Vollständigkeit"    → neutral (default, awaiting documents)
+   * "Fachliche Prüfung"  → warning (in progress)
+   * "Entscheidung"       → info (decision being prepared)
+   * "Abgeschlossen"      → success (final)
+   */
+  --ihk-status-submitted-color:      var(--kern-color-feedback-default);
+  --ihk-status-submitted-bg:         var(--kern-color-feedback-default-background);
+
+  --ihk-status-in-review-color:      var(--kern-color-feedback-warning);
+  --ihk-status-in-review-bg:         var(--kern-color-feedback-warning-background);
+
+  --ihk-status-info-color:           var(--kern-color-feedback-info);
+  --ihk-status-info-bg:              var(--kern-color-feedback-info-background);
+
+  --ihk-status-decided-color:        var(--kern-color-feedback-success);
+  --ihk-status-decided-bg:           var(--kern-color-feedback-success-background);
+
+
+  /* ── Layout — Prototype Constraints ────────────────────── */
+
+  /* Max card width on tablet+ (centred single-column layout) */
+  --ihk-max-width-card:             30rem; /* 480px */
+
+  /* Page horizontal padding on mobile */
+  --ihk-page-padding-x:             var(--kern-metric-space-default); /* 16px */
+
+  /* Page bottom padding to clear the fixed bottom nav */
+  --ihk-page-padding-bottom:        calc(
+                                      var(--ihk-bottom-nav-height)
+                                      + var(--ihk-bottom-nav-safe-area)
+                                      + var(--kern-metric-space-default)
+                                    );
+
+
+  /* ── Motion ─────────────────────────────────────────────── */
+
+  --ihk-duration-fast:   150ms; /* Micro-interactions: toggle, badge */
+  --ihk-duration-normal: 250ms; /* Navigation: tab switch, step advance */
+  --ihk-duration-slow:   400ms; /* Page transitions, modal open */
+
+  --ihk-easing-default:  cubic-bezier(0.4, 0, 0.2, 1); /* Standard ease-in-out */
+  --ihk-easing-out:      cubic-bezier(0, 0, 0.2, 1);   /* Elements entering */
+  --ihk-easing-in:       cubic-bezier(0.4, 0, 1, 1);   /* Elements leaving */
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   4. KERN Action Token Overrides — Dark Theme
+   Note: Dark mode is OUT OF SCOPE for this prototype (light only).
+   Included so the theme file is complete and future-ready.
+
+   IHK navy #212A54 has insufficient contrast on dark backgrounds.
+   --ihk-brand-navy-pale (#8B9AD4) is used instead:
+   contrast on near-black #141824 = ~7.2:1 — passes WCAG AA.
+   ═══════════════════════════════════════════════════════════════ */
+
+[data-kern-theme="dark"],
+.kern-dark {
+  --kern-color-action-default:    var(--ihk-brand-navy-pale);
+  --kern-color-action-on-default: #0d1018; /* near-black — contrast on pale navy: 8.1:1 */
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   5. System-Preference Dark Mode
+
+   Applies dark action tokens when OS is set to dark mode,
+   unless the user has explicitly chosen light via data-kern-theme.
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-kern-theme="light"]):not(.kern-light) {
+    --kern-color-action-default:    var(--ihk-brand-navy-pale);
+    --kern-color-action-on-default: #0d1018;
+  }
+}

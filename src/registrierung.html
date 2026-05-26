@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="de" data-kern-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Registrieren – IHK FOSA</title>
+  <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/fonts/fira-sans.css">
+  <link rel="stylesheet" href="../node_modules/@kern-ux/native/dist/kern.css">
+  <link rel="stylesheet" href="./theme.css">
+  <link rel="stylesheet" href="./components.css">
+</head>
+<body>
+  <div class="ihk-page">
+
+    <!-- ── Sticky Step Header ───────────────────────────────── -->
+    <div class="ihk-step-header">
+      <!-- Back navigation -->
+      <div style="padding: var(--kern-metric-space-small) var(--ihk-page-padding-x) 0; display: flex; align-items: center; gap: var(--kern-metric-space-small);">
+        <a href="login.html" class="ihk-back-btn" id="back-btn" aria-label="Zurück zum vorherigen Schritt">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          <span id="back-label">Zurück zur Anmeldung</span>
+        </a>
+        <a href="#" class="ihk-logo" aria-label="IHK FOSA" style="margin-left: auto;">
+          <img src="./assets/img/fosa_logo.avif" alt="IHK FOSA" class="ihk-logo__img">
+        </a>
+      </div>
+
+      <!-- Step progress -->
+      <div class="ihk-step-progress-wrap">
+        <div class="ihk-step-meta">
+          <span class="ihk-step-count" id="step-count" aria-live="polite">Schritt 1 von 4</span>
+          <span class="ihk-step-name" id="step-name">Persönliche Daten</span>
+        </div>
+        <div class="kern-progress">
+          <progress
+            id="step-progress"
+            value="1"
+            max="4"
+            aria-label="Registrierungsfortschritt: Schritt 1 von 4"
+            style="width: 100%;"
+          ></progress>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Main Content ──────────────────────────────────────── -->
+    <main id="main-content" class="ihk-page-main" style="padding-bottom: 5rem; gap: 0;">
+
+      <!-- ════ STEP 1: Persönliche Daten ════ -->
+      <section class="ihk-step-panel ihk-step-panel--active" id="step-1" aria-labelledby="step1-heading">
+        <div class="kern-card kern-card--hug" style="border-radius: 0; border-left: none; border-right: none; border-top: none;">
+          <div class="kern-card__container">
+            <div class="kern-card__header">
+              <h1 class="kern-heading-small" id="step1-heading">Persönliche Daten</h1>
+            </div>
+            <div class="kern-card__body">
+              <div class="ihk-stack">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--kern-metric-space-default);">
+                  <div class="kern-form-input">
+                    <label for="vorname" class="kern-label">Vorname</label>
+                    <input type="text" id="vorname" name="vorname"
+                           class="kern-form-input__input"
+                           autocomplete="given-name" required>
+                  </div>
+                  <div class="kern-form-input">
+                    <label for="nachname" class="kern-label">Nachname</label>
+                    <input type="text" id="nachname" name="nachname"
+                           class="kern-form-input__input"
+                           autocomplete="family-name" required>
+                  </div>
+                </div>
+
+                <div class="kern-form-input">
+                  <label for="reg-email" class="kern-label">E-Mail-Adresse</label>
+                  <input type="email" id="reg-email" name="email"
+                         class="kern-form-input__input"
+                         autocomplete="email" inputmode="email" required>
+                </div>
+
+                <div class="kern-form-input">
+                  <label for="reg-pw" class="kern-label">Passwort</label>
+                  <div class="ihk-password-field">
+                    <input type="password" id="reg-pw" name="passwort"
+                           class="kern-form-input__input"
+                           autocomplete="new-password" required
+                           aria-describedby="pw-hint">
+                    <button type="button" class="ihk-password-toggle" aria-label="Passwort anzeigen">
+                      <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                        <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                        <line x1="1" y1="1" x2="23" y2="23"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="kern-hint" id="pw-hint">Mindestens 8 Zeichen, ein Großbuchstabe, eine Ziffer.</p>
+                </div>
+
+                <div class="kern-form-input">
+                  <label for="reg-pw2" class="kern-label">Passwort bestätigen</label>
+                  <div class="ihk-password-field">
+                    <input type="password" id="reg-pw2" name="passwort2"
+                           class="kern-form-input__input"
+                           autocomplete="new-password" required>
+                    <button type="button" class="ihk-password-toggle" aria-label="Passwort anzeigen">
+                      <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2"
+                           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                        <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                        <line x1="1" y1="1" x2="23" y2="23"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ STEP 2: Herkunft & Qualifikation ════ -->
+      <section class="ihk-step-panel" id="step-2" aria-labelledby="step2-heading">
+        <div class="kern-card kern-card--hug" style="border-radius: 0; border-left: none; border-right: none; border-top: none;">
+          <div class="kern-card__container">
+            <div class="kern-card__header">
+              <h1 class="kern-heading-small" id="step2-heading">Herkunft &amp; Qualifikation</h1>
+            </div>
+            <div class="kern-card__body">
+              <div class="ihk-stack">
+
+                <div class="kern-form-input">
+                  <label for="land" class="kern-label">Herkunftsland</label>
+                  <div class="kern-form-input__select-wrapper">
+                    <select id="land" name="land" class="kern-form-input__select" required>
+                      <option value="" disabled selected>Bitte wählen …</option>
+                      <option value="BR">Brasilien</option>
+                      <option value="CN">China</option>
+                      <option value="EG">Ägypten</option>
+                      <option value="IN">Indien</option>
+                      <option value="IR">Iran</option>
+                      <option value="KZ">Kasachstan</option>
+                      <option value="MA">Marokko</option>
+                      <option value="PH">Philippinen</option>
+                      <option value="RU">Russland</option>
+                      <option value="SY">Syrien</option>
+                      <option value="TR">Türkei</option>
+                      <option value="UA">Ukraine</option>
+                      <option value="VN">Vietnam</option>
+                      <option value="OTHER">Anderes Land …</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="kern-form-input">
+                  <label for="qualifikation" class="kern-label">Art der Qualifikation</label>
+                  <div class="kern-form-input__select-wrapper">
+                    <select id="qualifikation" name="qualifikation" class="kern-form-input__select" required>
+                      <option value="" disabled selected>Bitte wählen …</option>
+                      <option value="ausbildung">Berufsausbildung (vergleichbar dual)</option>
+                      <option value="fachschule">Fachschulabschluss</option>
+                      <option value="hochschule">Hochschulabschluss (Bachelor)</option>
+                      <option value="master">Hochschulabschluss (Master / Diplom)</option>
+                      <option value="promotion">Promotion / Doktorgrad</option>
+                      <option value="sonstige">Sonstige Qualifikation</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="kern-form-input">
+                  <label for="abschlussjahr" class="kern-label">Jahr des Abschlusses</label>
+                  <input
+                    type="number"
+                    id="abschlussjahr"
+                    name="abschlussjahr"
+                    class="kern-form-input__input"
+                    min="1960"
+                    max="2026"
+                    placeholder="z. B. 2018"
+                    inputmode="numeric"
+                    required
+                    aria-describedby="jahr-hint"
+                  >
+                  <p class="kern-hint" id="jahr-hint">Geben Sie das Jahr ein, in dem Sie Ihren Abschluss erworben haben.</p>
+                </div>
+
+                <div class="kern-form-input">
+                  <label for="berufsbezeichnung" class="kern-label">Berufsbezeichnung im Herkunftsland
+                    <span class="kern-label__optional">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="berufsbezeichnung"
+                    name="berufsbezeichnung"
+                    class="kern-form-input__input"
+                    placeholder="z. B. Médico"
+                    autocomplete="off"
+                  >
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ STEP 3: Dokumente hochladen ════ -->
+      <section class="ihk-step-panel" id="step-3" aria-labelledby="step3-heading">
+        <div class="kern-card kern-card--hug" style="border-radius: 0; border-left: none; border-right: none; border-top: none;">
+          <div class="kern-card__container">
+            <div class="kern-card__header">
+              <h1 class="kern-heading-small" id="step3-heading">Dokumente hochladen</h1>
+            </div>
+            <div class="kern-card__body">
+              <div class="kern-alert kern-alert--info" style="margin-bottom: var(--kern-metric-space-default);">
+                <div class="kern-alert__header">
+                  <svg class="ihk-alert-icon" width="32" height="32" viewBox="0 0 24 24"
+                       fill="none" stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="16" x2="12" y2="12"/>
+                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                  </svg>
+                  <span class="kern-title">Akzeptierte Formate: PDF, JPG, PNG (max. 10 MB)</span>
+                </div>
+              </div>
+
+              <div class="ihk-stack">
+
+                <div class="ihk-upload-slot kern-form-input">
+                  <label for="zeugnis" class="kern-label">Abschlusszeugnis / Diplom</label>
+                  <input type="file" id="zeugnis" name="zeugnis"
+                         class="kern-form-input__input"
+                         accept=".pdf,.jpg,.jpeg,.png"
+                         aria-describedby="zeugnis-hint">
+                  <p class="kern-hint" id="zeugnis-hint">Original oder amtlich beglaubigte Kopie.</p>
+                </div>
+
+                <div class="ihk-upload-slot kern-form-input">
+                  <label for="uebersetzung" class="kern-label">Beglaubigte Übersetzung</label>
+                  <input type="file" id="uebersetzung" name="uebersetzung"
+                         class="kern-form-input__input"
+                         accept=".pdf,.jpg,.jpeg,.png"
+                         aria-describedby="uebers-hint">
+                  <p class="kern-hint" id="uebers-hint">Von einem vereidigten Übersetzer ins Deutsche übersetzt.</p>
+                </div>
+
+                <div class="ihk-upload-slot kern-form-input">
+                  <label for="ausweis" class="kern-label">Lichtbildausweis
+                    <span class="kern-label__optional">(optional)</span>
+                  </label>
+                  <input type="file" id="ausweis" name="ausweis"
+                         class="kern-form-input__input"
+                         accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ STEP 4: Zusammenfassung & Einwilligung ════ -->
+      <section class="ihk-step-panel" id="step-4" aria-labelledby="step4-heading">
+        <div class="kern-card kern-card--hug" style="border-radius: 0; border-left: none; border-right: none; border-top: none;">
+          <div class="kern-card__container">
+            <div class="kern-card__header">
+              <h1 class="kern-heading-small" id="step4-heading">Zusammenfassung</h1>
+            </div>
+            <div class="kern-card__body">
+              <div class="ihk-summary-section">
+
+                <div>
+                  <p class="ihk-summary-heading">Persönliche Daten</p>
+                  <dl class="kern-description-list kern-description-list--col">
+                    <div class="kern-description-list-item">
+                      <dt class="kern-description-list-item__key">Name</dt>
+                      <dd class="kern-description-list-item__value" id="summary-name">—</dd>
+                    </div>
+                    <div class="kern-description-list-item">
+                      <dt class="kern-description-list-item__key">E-Mail</dt>
+                      <dd class="kern-description-list-item__value" id="summary-email">—</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div>
+                  <p class="ihk-summary-heading">Qualifikation</p>
+                  <dl class="kern-description-list kern-description-list--col">
+                    <div class="kern-description-list-item">
+                      <dt class="kern-description-list-item__key">Herkunftsland</dt>
+                      <dd class="kern-description-list-item__value" id="summary-land">—</dd>
+                    </div>
+                    <div class="kern-description-list-item">
+                      <dt class="kern-description-list-item__key">Art der Qualifikation</dt>
+                      <dd class="kern-description-list-item__value" id="summary-qual">—</dd>
+                    </div>
+                    <div class="kern-description-list-item">
+                      <dt class="kern-description-list-item__key">Abschlussjahr</dt>
+                      <dd class="kern-description-list-item__value" id="summary-jahr">—</dd>
+                    </div>
+                  </dl>
+                </div>
+
+              </div>
+
+              <!-- Terms checkbox -->
+              <div style="margin-top: var(--kern-metric-space-large); padding-top: var(--kern-metric-space-default); border-top: 1px solid var(--kern-color-decorative-border-default);">
+                <fieldset class="kern-fieldset">
+                  <legend class="kern-label kern-sr-only">Einwilligungen</legend>
+                  <div class="kern-fieldset__body">
+                    <div class="kern-form-check">
+                      <input type="checkbox" id="agb" name="agb" class="kern-form-check__checkbox" required>
+                      <label for="agb" class="kern-label">
+                        Ich stimme den
+                        <a href="#" style="color: var(--kern-color-action-default);">Nutzungsbedingungen</a>
+                        und der
+                        <a href="#" style="color: var(--kern-color-action-default);">Datenschutzerklärung</a>
+                        zu.
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── Sticky Bottom Navigation ─────────────────────────── -->
+    <div class="ihk-step-nav" id="step-nav">
+      <button type="button" class="kern-btn kern-btn--secondary" id="prev-btn" disabled>
+        <span class="kern-label">Zurück</span>
+      </button>
+      <button type="button" class="kern-btn kern-btn--primary" id="next-btn">
+        <span class="kern-label">Weiter</span>
+      </button>
+    </div>
+
+  </div><!-- .ihk-page -->
+
+  <script>
+    'use strict';
+
+    const STEPS = [
+      { id: 'step-1', name: 'Persönliche Daten' },
+      { id: 'step-2', name: 'Herkunft & Qualifikation' },
+      { id: 'step-3', name: 'Dokumente hochladen' },
+      { id: 'step-4', name: 'Zusammenfassung' },
+    ];
+
+    let current = 0;
+
+    const stepCount    = document.getElementById('step-count');
+    const stepName     = document.getElementById('step-name');
+    const stepProgress = document.getElementById('step-progress');
+    const prevBtn      = document.getElementById('prev-btn');
+    const nextBtn      = document.getElementById('next-btn');
+    const backBtn      = document.getElementById('back-btn');
+    const backLabel    = document.getElementById('back-label');
+
+    function showStep(index) {
+      // Hide all panels
+      STEPS.forEach((s) => {
+        const el = document.getElementById(s.id);
+        el.classList.remove('ihk-step-panel--active');
+      });
+
+      // Show current
+      document.getElementById(STEPS[index].id).classList.add('ihk-step-panel--active');
+
+      // Update header
+      stepCount.textContent = `Schritt ${index + 1} von ${STEPS.length}`;
+      stepName.textContent  = STEPS[index].name;
+      stepProgress.value = index + 1;
+      stepProgress.setAttribute('aria-label', `Schritt ${index + 1} von ${STEPS.length}`);
+
+      // Update buttons
+      prevBtn.disabled = index === 0;
+      nextBtn.querySelector('.kern-label').textContent =
+        index === STEPS.length - 1 ? 'Registrierung abschließen' : 'Weiter';
+
+      // Back button
+      if (index === 0) {
+        backBtn.href = 'login.html';
+        backLabel.textContent = 'Zurück zur Anmeldung';
+      } else {
+        backBtn.href = '#';
+        backLabel.textContent = 'Zurück';
+        backBtn.onclick = (e) => { e.preventDefault(); goTo(index - 1); };
+      }
+
+      // Move focus to heading
+      const heading = document.getElementById(STEPS[index].id)
+                              .querySelector('h1');
+      heading.setAttribute('tabindex', '-1');
+      heading.focus();
+      heading.removeAttribute('tabindex');
+    }
+
+    function goTo(index) {
+      current = index;
+      showStep(current);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Fill summary on step 4
+    function fillSummary() {
+      const vorname  = document.getElementById('vorname').value  || '—';
+      const nachname = document.getElementById('nachname').value || '—';
+      const email    = document.getElementById('reg-email').value || '—';
+      const landEl   = document.getElementById('land');
+      const qualEl   = document.getElementById('qualifikation');
+      const jahr     = document.getElementById('abschlussjahr').value || '—';
+
+      document.getElementById('summary-name').textContent  = `${vorname} ${nachname}`.trim() || '—';
+      document.getElementById('summary-email').textContent = email;
+      document.getElementById('summary-land').textContent  =
+        landEl.options[landEl.selectedIndex]?.text || '—';
+      document.getElementById('summary-qual').textContent  =
+        qualEl.options[qualEl.selectedIndex]?.text || '—';
+      document.getElementById('summary-jahr').textContent  = jahr;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (current < STEPS.length - 1) {
+        if (current === STEPS.length - 2) fillSummary();
+        goTo(current + 1);
+      } else {
+        // Final submit — redirect to status
+        window.location.href = 'status.html';
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (current > 0) goTo(current - 1);
+    });
+
+    // Password toggles
+    document.querySelectorAll('.ihk-password-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const field = btn.closest('.ihk-password-field');
+        const input = field.querySelector('input');
+        const eyeOn  = btn.querySelector('.icon-eye');
+        const eyeOff = btn.querySelector('.icon-eye-off');
+        const showing = input.type === 'text';
+        input.type = showing ? 'password' : 'text';
+        btn.setAttribute('aria-label', showing ? 'Passwort anzeigen' : 'Passwort verbergen');
+        eyeOn.style.display  = showing ? '' : 'none';
+        eyeOff.style.display = showing ? 'none' : '';
+      });
+    });
+
+    // Init
+    showStep(0);
+  </script>
+</body>
+</html>

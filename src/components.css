@@ -1,0 +1,631 @@
+/**
+ * IHK-FOSA Custom Components
+ * ===========================
+ * Load order: kern.css → theme.css → components.css
+ * Extends @kern-ux/native with: page layout, logo, bottom nav, timeline,
+ * password field, registration steps, and admin board layout.
+ * All values reference tokens from theme.css or kern.css — no hardcoded colors.
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   Page Layout
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--kern-color-layout-background-hued);
+}
+
+.ihk-page-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-default);
+  padding: var(--kern-metric-space-default) var(--ihk-page-padding-x);
+  padding-bottom: var(--ihk-page-padding-bottom);
+  overflow-y: auto;
+}
+
+/* Auth page layout (login / registration) */
+.ihk-auth-header {
+  background: var(--kern-color-layout-background-default);
+  border-bottom: 1px solid var(--kern-color-decorative-border-default);
+  padding: var(--kern-metric-space-default) var(--ihk-page-padding-x);
+  display: flex;
+  align-items: center;
+}
+
+.ihk-auth-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--kern-metric-space-large) var(--ihk-page-padding-x);
+}
+
+.ihk-auth-wrap {
+  width: 100%;
+  max-width: var(--ihk-max-width-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-default);
+}
+
+.ihk-auth-links {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--kern-metric-space-x-small);
+}
+
+.ihk-register-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kern-metric-space-small);
+  text-align: center;
+  padding: var(--kern-metric-space-default) 0 var(--kern-metric-space-small);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   IHK-FOSA Logo
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.ihk-logo__img {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Kopfzeile Extensions
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-kopfzeile-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kern-metric-space-small);
+}
+
+.ihk-kopfzeile-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--kern-metric-space-x-small);
+  flex-shrink: 0;
+}
+
+.ihk-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--kern-color-action-default);
+  transition: background var(--ihk-duration-fast) var(--ihk-easing-default);
+}
+
+.ihk-icon-btn:hover {
+  background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+}
+
+.ihk-icon-btn:focus-visible {
+  outline: 4px solid var(--kern-color-action-default);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.ihk-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 0.5rem;
+  border-radius: var(--kern-metric-border-radius-default);
+  background: var(--kern-color-feedback-info-background);
+  border: 1px solid var(--kern-color-feedback-info);
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--kern-color-feedback-info);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Alert icon color (inline SVG variant of kern-icon)
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-alert-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.kern-alert--danger   .ihk-alert-icon { color: var(--kern-color-feedback-danger); }
+.kern-alert--info     .ihk-alert-icon { color: var(--kern-color-feedback-info); }
+.kern-alert--success  .ihk-alert-icon { color: var(--kern-color-feedback-success); }
+.kern-alert--warning  .ihk-alert-icon { color: var(--kern-color-feedback-warning); }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Password Field
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-password-field {
+  position: relative;
+  width: 100%;
+}
+
+.ihk-password-field .kern-form-input__input {
+  padding-right: 3rem;
+}
+
+.ihk-password-toggle {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--kern-color-layout-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--kern-metric-border-radius-default);
+  padding: 0;
+}
+
+.ihk-password-toggle:hover {
+  color: var(--kern-color-layout-text-default);
+}
+
+.ihk-password-toggle:focus-visible {
+  outline: 4px solid var(--kern-color-action-default);
+  outline-offset: 2px;
+}
+
+.ihk-password-toggle .icon-eye-off {
+  display: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Bottom Tab Bar (applicant navigation)
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--ihk-bottom-nav-height);
+  padding-bottom: var(--ihk-bottom-nav-safe-area);
+  background: var(--ihk-bottom-nav-bg);
+  border-top: var(--ihk-bottom-nav-border-top);
+  display: flex;
+  align-items: stretch;
+}
+
+.ihk-bottom-nav__tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--ihk-bottom-nav-label-inactive);
+  min-height: 2.75rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  transition: color var(--ihk-duration-fast) var(--ihk-easing-default);
+}
+
+.ihk-bottom-nav__tab[aria-selected="true"] {
+  color: var(--ihk-bottom-nav-icon-active);
+}
+
+.ihk-bottom-nav__tab:focus-visible {
+  outline: 4px solid var(--kern-color-action-default);
+  outline-offset: -4px;
+  border-radius: var(--kern-metric-border-radius-default);
+}
+
+.ihk-bottom-nav__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  flex-shrink: 0;
+}
+
+.ihk-bottom-nav__label {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: var(--ihk-bottom-nav-label-size);
+  font-weight: var(--ihk-bottom-nav-label-weight);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .ihk-bottom-nav {
+    display: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Application Timeline (vertical step indicator)
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ihk-timeline__step {
+  display: flex;
+  gap: var(--kern-metric-space-default);
+  position: relative;
+}
+
+/* Connector line rendered via the indicator's ::after */
+.ihk-timeline__step:not(:last-child) .ihk-timeline__indicator::after {
+  content: '';
+  position: absolute;
+  top: var(--ihk-timeline-step-size);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--ihk-timeline-connector-width);
+  /* stretch to the content padding-bottom of this step */
+  bottom: calc(-1 * var(--kern-metric-space-large));
+  background: var(--ihk-timeline-connector-pending);
+}
+
+.ihk-timeline__step--done:not(:last-child) .ihk-timeline__indicator::after {
+  background: var(--ihk-timeline-connector-done);
+}
+
+.ihk-timeline__indicator {
+  flex-shrink: 0;
+  width: var(--ihk-timeline-step-size);
+  height: var(--ihk-timeline-step-size);
+  border-radius: 50%;
+  border: var(--ihk-timeline-step-border-width) solid var(--ihk-timeline-step-pending-border);
+  background: var(--ihk-timeline-step-pending-bg);
+  color: var(--ihk-timeline-step-pending-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ihk-timeline__step--active .ihk-timeline__indicator {
+  background: var(--ihk-timeline-step-active-bg);
+  border-color: var(--ihk-timeline-step-active-border);
+  color: var(--ihk-timeline-step-active-color);
+}
+
+.ihk-timeline__step--done .ihk-timeline__indicator {
+  background: var(--ihk-timeline-step-done-bg);
+  border-color: var(--ihk-timeline-step-done-border);
+  color: var(--ihk-timeline-step-done-color);
+}
+
+.ihk-timeline__content {
+  flex: 1;
+  padding-bottom: var(--kern-metric-space-large);
+  padding-top: 0.3125rem; /* visually align label with circle center */
+}
+
+.ihk-timeline__step:last-child .ihk-timeline__content {
+  padding-bottom: 0;
+}
+
+.ihk-timeline__label {
+  display: block;
+  font-family: var(--kern-typography-font-family-default);
+  font-size: var(--ihk-timeline-label-size);
+  font-weight: var(--ihk-timeline-label-weight);
+  color: var(--kern-color-layout-text-muted);
+  line-height: var(--ihk-timeline-step-size);
+}
+
+.ihk-timeline__step--active .ihk-timeline__label {
+  font-weight: var(--ihk-timeline-label-active-weight);
+  color: var(--kern-color-layout-text-default);
+}
+
+.ihk-timeline__date {
+  display: block;
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.6875rem;
+  color: var(--kern-color-layout-text-muted);
+  margin-top: 0.125rem;
+  line-height: 1.4;
+}
+
+.ihk-timeline__current-label {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--kern-color-action-default);
+  letter-spacing: 0.01em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Registration Steps
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-step-header {
+  background: var(--kern-color-layout-background-default);
+  border-bottom: 1px solid var(--kern-color-decorative-border-default);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ihk-step-progress-wrap {
+  padding: var(--kern-metric-space-default) var(--ihk-page-padding-x) 0;
+}
+
+.ihk-step-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--kern-metric-space-small);
+}
+
+.ihk-step-count {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.6875rem;
+  color: var(--kern-color-layout-text-muted);
+  font-weight: 500;
+}
+
+.ihk-step-name {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--kern-color-layout-text-default);
+}
+
+/* Step panels — hidden/shown via JS */
+.ihk-step-panel {
+  display: none;
+}
+
+.ihk-step-panel--active {
+  display: block;
+}
+
+/* Bottom step navigation (sticky footer) */
+.ihk-step-nav {
+  background: var(--kern-color-layout-background-default);
+  border-top: 1px solid var(--kern-color-decorative-border-default);
+  padding: var(--kern-metric-space-default) var(--ihk-page-padding-x);
+  display: flex;
+  gap: var(--kern-metric-space-small);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+.ihk-step-nav .kern-btn {
+  flex: 1;
+}
+
+/* Upload slot */
+.ihk-upload-slot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-small);
+}
+
+.ihk-upload-label {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--kern-color-layout-text-default);
+}
+
+.ihk-upload-hint {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.75rem;
+  color: var(--kern-color-layout-text-muted);
+}
+
+/* Registration summary (Step 4) */
+.ihk-summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-default);
+}
+
+.ihk-summary-heading {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--kern-color-layout-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-bottom: var(--kern-metric-space-x-small);
+  border-bottom: 1px solid var(--kern-color-decorative-border-default);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Admin Board
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-small);
+}
+
+.ihk-app-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-small);
+}
+
+.ihk-app-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--kern-metric-space-small);
+  margin-bottom: var(--kern-metric-space-x-small);
+}
+
+.ihk-app-name {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--kern-color-layout-text-default);
+  line-height: 1.3;
+}
+
+.ihk-app-ref {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.6875rem;
+  color: var(--kern-color-layout-text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.ihk-app-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: var(--kern-metric-space-default);
+}
+
+.ihk-app-detail {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.8125rem;
+  color: var(--kern-color-layout-text-muted);
+  line-height: 1.4;
+}
+
+.ihk-app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--kern-metric-space-small);
+  padding-top: var(--kern-metric-space-small);
+  border-top: 1px solid var(--kern-color-decorative-border-default);
+}
+
+.ihk-app-date {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.75rem;
+  color: var(--kern-color-layout-text-muted);
+}
+
+/* Admin page has no bottom nav — just enough bottom padding */
+.ihk-admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-default);
+  padding: var(--kern-metric-space-default) var(--ihk-page-padding-x);
+  padding-bottom: var(--kern-metric-space-x-large);
+  overflow-y: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Shared utility
+   ═══════════════════════════════════════════════════════════════ */
+
+.ihk-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kern-metric-space-default);
+}
+
+.ihk-section-label {
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--kern-color-layout-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.ihk-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kern-metric-space-x-small);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--kern-color-action-default);
+  font-family: var(--kern-typography-font-family-default);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: var(--kern-metric-space-x-small) 0;
+  min-height: 2.75rem;
+}
+
+.ihk-back-btn:hover {
+  text-decoration: underline;
+}
+
+.ihk-back-btn:focus-visible {
+  outline: 4px solid var(--kern-color-action-default);
+  outline-offset: 2px;
+  border-radius: var(--kern-metric-border-radius-small);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Badge neutral variant (KERN default has no background)
+   Used for "Eingegangen" status in admin board
+   ═══════════════════════════════════════════════════════════════ */
+
+.kern-badge:not(.kern-badge--info):not(.kern-badge--success):not(.kern-badge--warning):not(.kern-badge--danger) {
+  background: var(--kern-color-feedback-default-background);
+  border: 1px solid var(--kern-color-feedback-default);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Reduced motion
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ihk-bottom-nav__tab,
+  .ihk-icon-btn,
+  .ihk-ihk-step-panel {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@kern-ux/native": "^2.6.1"
+  }
+}
